@@ -6,11 +6,13 @@ import HomePage from './pages/HomePage';
 
 function App() {
   return (
-    <Routes>
-      <Layout>
-        <Route path='/' element={HomePage} />
-      </Layout>
-    </Routes>
+    <Layout>
+      <Routes>
+        <Route path='/' element={<HomePage/>} />
+        {/* <Route path='/auth' element={<Authpage />} /> */}
+        {/* <Route path='/profile' element={<UserProfile />} /> */}
+      </Routes>
+    </Layout>
   );
 }
 

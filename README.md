@@ -1,5 +1,5 @@
 ## react authentication
 
-### firebase
+- firebase
 
-### jwt
+- jwt
