@@ -1,6 +1,22 @@
+import { useRef } from 'react';
+
+import classes from './ProfileForm.module.css';
+
 const ProfileForm = () => {
+	const passwordInputRef = useRef();
+	const submitHandler = (event) => {
+		event.preventDefault();
+	}
 	return (
-<h1></h1>
+		<form className={classes.form} onSubmit={submitHandler}>
+			<div className={classes.control}>
+				<label htmlFor="new-password">New Password</label>
+				<input type='password' id='new-password' ref={passwordInputRef} />
+			</div> 
+			<div className={classes.action}>
+				<button>Change Password</button>
+			</div> 
+		</form> 
 	);
 };
 
