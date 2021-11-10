@@ -1,12 +1,30 @@
-import { useRef } from 'react';
-
+import { useRef, useContext } from 'react';
+import AuthContext from '../../store/auth-context';
 import classes from './ProfileForm.module.css';
 
 const ProfileForm = () => {
 	const passwordInputRef = useRef();
+	const authCtx = useContext(AuthContext);
+
 	const submitHandler = (event) => {
 		event.preventDefault();
-	}
+		let url = 'https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyC7B71F9xeXVGqxs7vdw_VEZu4w52LK_wo';
+		
+		fetch(url, {
+			method: 'POST',
+			body: JSON.stringify({
+				idToken: authCtx.token,
+				password: passwordInputRef.current.value,
+				returnSecureToken: false
+			}),
+			headers: {
+				'Content-Type': 'application/json'
+			}		
+		}).then(res => {
+			console.log(res.json());
+		})
+	};
+
 	return (
 		<form className={classes.form} onSubmit={submitHandler}>
 			<div className={classes.control}>
